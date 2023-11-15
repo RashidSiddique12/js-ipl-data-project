@@ -1,7 +1,8 @@
 // Number of matches played per year for all the years in IPL.
 const matches = require("../data/matches.json");
 const fs = require("fs");
-// console.log(matches);
+
+////////////////using simple loop////////////////
 
 // let noOfMatcheePerYear = {};
 
@@ -14,7 +15,7 @@ const fs = require("fs");
 // }
 // console.log(JSON.stringify(noOfMatcheePerYear));
 
-///////////////////////// using reduce
+///////////////////////// using reduce ///////////
 
 const noOfMatcheePerYear = matches.reduce((acc, match) => {
   const { season } = match;
