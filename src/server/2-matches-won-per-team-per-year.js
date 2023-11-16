@@ -11,20 +11,19 @@ for(let i=0; i<matches.length; i++){
 }
 // console.log(teams);
 
-for(let team in teams){
-    for(let i=0; i<matches.length; i++){
-        if(team === matches[i].winner){
-            if(!teams[team][matches[i].season]){
-                teams[team][matches[i].season] = 0;
-            }
-            teams[team][matches[i].season]++;
+for(let i=0; i<matches.length; i++){
+    if(matches[i].winner){
+        if(!teams[matches[i].winner][matches[i].season]){
+            teams[matches[i].winner][matches[i].season] = 0;
         }
+        teams[matches[i].winner][matches[i].season]++;
     }
 }
 
+console.log(teams);
+
 fs.writeFileSync('../public/output/matchesWonPerTeamPerYear.json', JSON.stringify(teams))
 
-// console.log(teams);
 
 //////////////////2nd method using reduce method
 
