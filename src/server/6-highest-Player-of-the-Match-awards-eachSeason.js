@@ -18,26 +18,26 @@ const playerOfMatch = matches.reduce((acc, match) => {
   return acc;
 }, {});
 
-// console.log(playerOfMatch);
+console.log(playerOfMatch)
 
-const highestPlayerOfMatchEachSeason = {};
+// const highestPlayerOfMatchEachSeason = {};
 
-for (let season in playerOfMatch) {
-  highestPlayerOfMatchEachSeason[season] = Object.keys(
-    playerOfMatch[season]
-  ).reduce((acc, player) => {
-    
-    if (!acc.name || playerOfMatch[season][player] > acc.number) {
-      acc.name = player;
-      acc.number = playerOfMatch[season][player];
-    }
-    return acc;
-  }, {});
-}
+// for (let season in playerOfMatch) {
+//   highestPlayerOfMatchEachSeason[season] = Object.keys(
+//     playerOfMatch[season]
+//   ).reduce((acc, player) => {
 
-console.log(highestPlayerOfMatchEachSeason);
+//     if (!acc.name || playerOfMatch[season][player] > acc.number) {
+//       acc.name = player;
+//       acc.number = playerOfMatch[season][player];
+//     }
+//     return acc;
+//   }, {});
+// }
 
-fs.writeFileSync(
-  "../public/output/highestPlayerOftheMatchAwardEachSeason.json",
-  JSON.stringify(highestPlayerOfMatchEachSeason)
-);
+// console.log(highestPlayerOfMatchEachSeason);
+
+// fs.writeFileSync(
+//   "../public/output/highestPlayerOftheMatchAwardEachSeason.json",
+//   JSON.stringify(highestPlayerOfMatchEachSeason)
+// );
