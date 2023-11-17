@@ -1,9 +1,6 @@
 // Find a player who has won the highest number of Player of the Match awards for each season
 
-// 6-highest-Player-of-the-Match-awards-eachSeason.js
-
-const matches = require("../data/matches.json");
-const fs = require("fs");
+const playerOfTheMatchAward = (matches)=>{
 
 const playerOfMatch = matches.reduce((acc, match) => {
   const { season, player_of_match } = match;
@@ -18,26 +15,27 @@ const playerOfMatch = matches.reduce((acc, match) => {
   return acc;
 }, {});
 
-console.log(playerOfMatch)
+// console.log(playerOfMatch)
 
-// const highestPlayerOfMatchEachSeason = {};
 
-// for (let season in playerOfMatch) {
-//   highestPlayerOfMatchEachSeason[season] = Object.keys(
-//     playerOfMatch[season]
-//   ).reduce((acc, player) => {
+const highestPlayerOfMatchEachSeason = {};
 
-//     if (!acc.name || playerOfMatch[season][player] > acc.number) {
-//       acc.name = player;
-//       acc.number = playerOfMatch[season][player];
-//     }
-//     return acc;
-//   }, {});
-// }
+for (let season in playerOfMatch) {
+  highestPlayerOfMatchEachSeason[season] = Object.keys(
+    playerOfMatch[season]
+  ).reduce((acc, player) => {
+
+    if (!acc.name || playerOfMatch[season][player] > acc.number) {
+      acc.name = player;
+      acc.number = playerOfMatch[season][player];
+    }
+    return acc;
+  }, {});
+}
 
 // console.log(highestPlayerOfMatchEachSeason);
+  return highestPlayerOfMatchEachSeason;
+}
+module.exports.playerOfTheMatchAward = playerOfTheMatchAward;
 
-// fs.writeFileSync(
-//   "../public/output/highestPlayerOftheMatchAwardEachSeason.json",
-//   JSON.stringify(highestPlayerOfMatchEachSeason)
-// );
+

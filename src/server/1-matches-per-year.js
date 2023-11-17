@@ -1,6 +1,28 @@
 // Number of matches played per year for all the years in IPL.
-const matches = require("../data/matches.json");
-const fs = require("fs");
+
+const matchPerYear = (matches) => {
+  const noOfMatcheePerYear = matches.reduce((acc, match) => {
+    const { season } = match;
+
+    acc[season] = (acc[season] || 0) + 1;
+    return acc;
+  }, {});
+
+  return noOfMatcheePerYear;
+};
+
+module.exports.matchPerYear = matchPerYear;
+
+
+
+
+
+
+// fs.writeFileSync(
+//   "../public/output/matchesPerYear.json",
+//   JSON.stringify(noOfMatcheePerYear)
+// );
+// console.log(noOfMatcheePerYear);
 
 ////////////////using simple loop////////////////
 
@@ -14,19 +36,3 @@ const fs = require("fs");
 //   noOfMatcheePerYear[matches[i].season]++;
 // }
 // console.log(JSON.stringify(noOfMatcheePerYear));
-
-///////////////////////// using reduce ///////////
-
-const noOfMatcheePerYear = matches.reduce((acc, match) => {
-  const { season } = match;
-
-  acc[season] = (acc[season] || 0) + 1;
-  return acc;
-
-}, {});
-
-fs.writeFileSync(
-  "../public/output/matchesPerYear.json",
-  JSON.stringify(noOfMatcheePerYear)
-);
-console.log(noOfMatcheePerYear);

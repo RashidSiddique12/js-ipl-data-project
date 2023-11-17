@@ -1,7 +1,6 @@
 // Find the number of times each team won the toss and also won the match
 
-const matches = require("../data/matches.json");
-const fs = require("fs");
+const EachTeamsWonTossAsWellAsMatch = (matches)=>{
 
 const teamsWonTossAndMatch = matches.reduce((acc, match) => {
   const { toss_winner, winner } = match;
@@ -14,9 +13,8 @@ const teamsWonTossAndMatch = matches.reduce((acc, match) => {
   return acc;
 }, {});
 
-fs.writeFileSync(
-  "../public/output/teamWonTossAsWellAsMatch.json",
-  JSON.stringify(teamsWonTossAndMatch)
-);
-
 // console.log(teamsWonTossAndMatch);
+  return teamsWonTossAndMatch;
+}
+
+module.exports.EachTeamsWonTossAsWellAsMatch = EachTeamsWonTossAsWellAsMatch;

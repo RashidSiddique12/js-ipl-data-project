@@ -1,7 +1,6 @@
 // Extra runs conceded per team in the year 2016
-const matches = require("../data/matches.json");
-const deliveries = require("../data/deliveries.json");
-const fs = require("fs");
+
+const extraRunsconcedecPerteam2016 = (matches, deliveries)=>{
 
 const idOf2016Matches = matches.reduce((acc, match) => {
   const { id, season } = match;
@@ -13,8 +12,6 @@ const idOf2016Matches = matches.reduce((acc, match) => {
 
 // console.log(idOf2016Matches);
 
-///////////// using reduce//////
-
 const extraRunsconcedecPerteam = deliveries.reduce((acc, delivery) => {
   const { match_id, bowling_team, extra_runs } = delivery;
   if (idOf2016Matches.includes(match_id)) {
@@ -22,7 +19,20 @@ const extraRunsconcedecPerteam = deliveries.reduce((acc, delivery) => {
   }
   return acc;
 }, {});
-console.log(extraRunsconcedecPerteam);
+// console.log(extraRunsconcedecPerteam);
+
+  return extraRunsconcedecPerteam;
+}
+
+module.exports.extraRunsconcedecPerteam2016 = extraRunsconcedecPerteam2016;
+
+
+
+
+
+
+
+
 
 ///////////////////////////using for loop////////////////////////
 
@@ -43,7 +53,7 @@ console.log(extraRunsconcedecPerteam);
 
 // console.log(perTeam);
 
-fs.writeFileSync(
-  "../public/output/extraRunsConcededPerTeam2016.json",
-  JSON.stringify(extraRunsconcedecPerteam)
-);
+// fs.writeFileSync(
+//   "../public/output/extraRunsConcededPerTeam2016.json",
+//   JSON.stringify(extraRunsconcedecPerteam)
+// );

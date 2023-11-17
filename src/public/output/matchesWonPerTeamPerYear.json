@@ -6,7 +6,9 @@
     "2016": 11,
     "2017": 8
   },
-  "Rising Pune Supergiant": { "2017": 10 },
+  "Rising Pune Supergiant": {
+    "2017": 10
+  },
   "Kolkata Knight Riders": {
     "2008": 6,
     "2009": 3,
@@ -67,7 +69,10 @@
     "2016": 7,
     "2017": 6
   },
-  "Gujarat Lions": { "2016": 9, "2017": 4 },
+  "Gujarat Lions": {
+    "2016": 9,
+    "2017": 4
+  },
   "Chennai Super Kings": {
     "2008": 9,
     "2009": 8,
@@ -88,8 +93,22 @@
     "2014": 7,
     "2015": 7
   },
-  "Deccan Chargers": { "2008": 2, "2009": 9, "2010": 8, "2011": 6, "2012": 4 },
-  "Pune Warriors": { "2011": 4, "2012": 4, "2013": 4 },
-  "Kochi Tuskers Kerala": { "2011": 6 },
-  "Rising Pune Supergiants": { "2016": 5 }
+  "Deccan Chargers": {
+    "2008": 2,
+    "2009": 9,
+    "2010": 8,
+    "2011": 6,
+    "2012": 4
+  },
+  "Pune Warriors": {
+    "2011": 4,
+    "2012": 4,
+    "2013": 4
+  },
+  "Kochi Tuskers Kerala": {
+    "2011": 6
+  },
+  "Rising Pune Supergiants": {
+    "2016": 5
+  }
 }
