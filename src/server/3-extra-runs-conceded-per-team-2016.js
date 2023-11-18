@@ -14,11 +14,15 @@ const idOf2016Matches = matches.reduce((acc, match) => {
 
 const extraRunsconcedecPerteam = deliveries.reduce((acc, delivery) => {
   const { match_id, bowling_team, extra_runs } = delivery;
+
+  if(bowling_team == undefined) return acc;
+
   if (idOf2016Matches.includes(match_id)) {
     acc[bowling_team] = (acc[bowling_team] || 0) + parseInt(extra_runs);
   }
   return acc;
 }, {});
+
 // console.log(extraRunsconcedecPerteam);
 
   return extraRunsconcedecPerteam;

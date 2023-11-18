@@ -13,7 +13,7 @@ const top10EconomicalBowlers2015 = (matches, deliveries) => {
 
   let bowlerdata = deliveries.reduce((acc, delivery) => {
     if (idof2015Matches.includes(delivery.match_id)) {
-      const { bowler, total_runs, over, wide_runs, noball_runs } = delivery;
+      const { bowler, total_runs, wide_runs, noball_runs } = delivery;
       if (!acc[bowler]) {
         acc[bowler] = { runs: 0, balls: 0 };
       }
@@ -24,18 +24,13 @@ const top10EconomicalBowlers2015 = (matches, deliveries) => {
     return acc;
   }, {});
 
-  //economy
-  Object.keys(bowlerdata).forEach((bowler) => {
-    const { runs, balls } = bowlerdata[bowler];
-    bowlerdata[bowler].economy = ((runs / balls) * 6).toFixed(2);
-  });
-  // console.log(bowlerdata);
   // array
   const bowlersArray = Object.entries(bowlerdata).map(([bowler, data]) => ({
     bowler: bowler,
-    economy: data.economy,
+    economy: ((data.runs /data.balls)*6).toFixed(2),
   }));
   // console.log(bowlersArray);
+
   // sort
   const sortedBYEco = bowlersArray.sort((a, b) => a.economy - b.economy);
   // console.log(sortedBYEco);

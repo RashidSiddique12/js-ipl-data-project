@@ -5,6 +5,8 @@ const playerOfTheMatchAward = (matches)=>{
 const playerOfMatch = matches.reduce((acc, match) => {
   const { season, player_of_match } = match;
 
+  if(season === undefined) return acc;
+
   if (!acc[season]) {
     acc[season] = {};
   }
@@ -17,13 +19,10 @@ const playerOfMatch = matches.reduce((acc, match) => {
 
 // console.log(playerOfMatch)
 
-
 const highestPlayerOfMatchEachSeason = {};
 
 for (let season in playerOfMatch) {
-  highestPlayerOfMatchEachSeason[season] = Object.keys(
-    playerOfMatch[season]
-  ).reduce((acc, player) => {
+  highestPlayerOfMatchEachSeason[season] = Object.keys(playerOfMatch[season]).reduce((acc, player) => {
 
     if (!acc.name || playerOfMatch[season][player] > acc.number) {
       acc.name = player;

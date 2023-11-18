@@ -2,8 +2,10 @@
 
 const getbestEconomyInSuperOver = (deliveries) => {
   const ballInSuperOver = deliveries.reduce((acc, delivery) => {
-    const { is_super_over, bowler, total_runs, wide_runs, noball_runs } =
-      delivery;
+    const { is_super_over, bowler, total_runs, wide_runs, noball_runs } = delivery;
+
+    if(bowler === undefined) return acc;
+
     if (is_super_over !== "0") {
       if (!acc[bowler]) {
         acc[bowler] = { runs: 0, balls: 0 };
@@ -14,17 +16,11 @@ const getbestEconomyInSuperOver = (deliveries) => {
     return acc;
   }, {});
 
-  //eco
-  Object.keys(ballInSuperOver).forEach((bowler) => {
-    const { runs, balls } = ballInSuperOver[bowler];
-    ballInSuperOver[bowler].economy = ((runs / balls) * 6).toFixed(2);
-  });
-  // console.log(ballInSuperOver);
-
+  //making Arrays for sorting and finding Economy
   const ballInSuperOverArray = Object.entries(ballInSuperOver).map(
     ([bowler, data]) => ({
       bowler: bowler,
-      economy: data.economy,
+      economy: ((data.runs / data.balls) * 6).toFixed(2),
     })
   );
 

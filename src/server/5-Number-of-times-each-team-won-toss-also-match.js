@@ -1,20 +1,22 @@
 // Find the number of times each team won the toss and also won the match
 
-const EachTeamsWonTossAsWellAsMatch = (matches)=>{
+const EachTeamsWonTossAsWellAsMatch = (matches) => {
+  const teamsWonTossAndMatch = matches.reduce((acc, match) => {
+    const { toss_winner, winner } = match;
 
-const teamsWonTossAndMatch = matches.reduce((acc, match) => {
-  const { toss_winner, winner } = match;
-  if (toss_winner === winner) {
-    if (!acc[toss_winner]) {
-      acc[toss_winner] = 0;
+    if (toss_winner === undefined) return acc;
+
+    if (toss_winner === winner) {
+      if (!acc[toss_winner]) {
+        acc[toss_winner] = 0;
+      }
+      acc[toss_winner]++;
     }
-    acc[toss_winner]++;
-  }
-  return acc;
-}, {});
+    return acc;
+  }, {});
 
-// console.log(teamsWonTossAndMatch);
+  // console.log(teamsWonTossAndMatch);
   return teamsWonTossAndMatch;
-}
+};
 
 module.exports.EachTeamsWonTossAsWellAsMatch = EachTeamsWonTossAsWellAsMatch;

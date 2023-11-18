@@ -1,8 +1,11 @@
 // Number of matches played per year for all the years in IPL.
 
 const matchPerYear = (matches) => {
+  
   const noOfMatcheePerYear = matches.reduce((acc, match) => {
+
     const { season } = match;
+    if(season == undefined) return acc;
 
     acc[season] = (acc[season] || 0) + 1;
     return acc;

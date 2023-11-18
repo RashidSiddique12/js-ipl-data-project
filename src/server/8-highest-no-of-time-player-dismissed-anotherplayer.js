@@ -3,6 +3,8 @@
 const OnedDismissedbyOther = (deliveries) => {
   const dismisalByBolwer = deliveries.reduce((acc, delivery) => {
     const { bowler, player_dismissed, dismissal_kind } = delivery;
+    if (bowler === undefined) return acc;
+
     if (player_dismissed !== "" && dismissal_kind !== "run out") {
       if (!acc[bowler]) {
         acc[bowler] = {};
