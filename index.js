@@ -1,6 +1,7 @@
 const matches = require('./src/data/matches.json');
 const deliveries = require('./src/data/deliveries.json');
 const fs = require('fs');
+const prompt = require("prompt-sync")();
 const {matchPerYear} = require('./src/server/1-matches-per-year');
 const {matchesWonPerteamPerYear} = require('./src/server/2-matches-won-per-team-per-year');
 const {extraRunsconcedecPerteam2016} = require('./src/server/3-extra-runs-conceded-per-team-2016');
@@ -30,7 +31,9 @@ fs.writeFileSync('./src/public/output/teamWonTossAsWellAsMatch.json', JSON.strin
 const playerOfTheMatchAward_6 = playerOfTheMatchAward(matches); 
 fs.writeFileSync('./src/public/output/highestPlayerOftheMatchAwardEachSeason.json', JSON.stringify(playerOfTheMatchAward_6, null , 2));
 
-const strikeRateOfABatsmanEachSeason_7 = strikeRateOfABatsmanEachSeason(matches, deliveries)
+const batsmanX = prompt("Entre batsman name : ");
+// const batsmanX = "ER Dwivedi";
+const strikeRateOfABatsmanEachSeason_7 = strikeRateOfABatsmanEachSeason(matches, deliveries, batsmanX)
 fs.writeFileSync('./src/public/output/strikeRateOfABatsmanEachSeason.json', JSON.stringify(strikeRateOfABatsmanEachSeason_7, null , 2));
 
 const OnedDismissedbyOther_8 = OnedDismissedbyOther(deliveries)

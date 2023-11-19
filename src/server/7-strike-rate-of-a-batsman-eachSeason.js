@@ -1,16 +1,12 @@
 // Find the strike rate of a batsman for each season
-const prompt = require("prompt-sync")();
 
-const strikeRateOfABatsmanEachSeason = (matches, deliveries) => {
+const strikeRateOfABatsmanEachSeason = (matches, deliveries, batsmanX) => {
   const idmapWithSeason = matches.reduce((acc, match) => {
     const { id, season } = match;
     acc[id] = season;
     return acc;
   }, {});
   // console.log(idmapWithSeason);
-
-  const batsmanX = prompt("Entre batsman name : ");
-  // const batsmanX = "ER Dwivedi";
 
   const batsmanData = deliveries.reduce((acc, deliverly) => {
     const { batsman, batsman_runs, match_id, wide_runs, noball_runs } =
